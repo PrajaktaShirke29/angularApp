@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title >Register form</title>
+    
+</head>
+<body>
+    <div class="container">
+        
+                <h2>Register form</h2>
+            <label>UserName</label><br/>
+            <input type="text" class="formControl" [(ngModel)]="this.user.UserName"/><br/>
+            <label>Password</label><br/>
+            <input type="password" class="formControl" [(ngModel)]="this.user.Password"/><br/>
+            <label>Confirm Password</label><br/>
+            <input type="password" class="formControl" [(ngModel)]="this.user.ConfirmPassword"/><br/>
+            <input type="button"  value="SignIn" class="btn btn-success">
+            <input type="button"  value="Cancel" class="btn btn-warning" (click)="clear()">
+    
+    </div>
+    
+   
+</body>
+</html>

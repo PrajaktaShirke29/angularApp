@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <title >Login form</title>
+    
+</head>
+<body>
+    
+    <div class="container">
+       
+                <h2>Login form</h2>
+            <label for="UserName">UserName</label><br/>
+            <input type="text" class="formControl"  [(ngModel)]="user.UserName" /><br/>
+            <label for="Password">Password</label><br/>
+            <input type="password" class="formControl" [(ngModel)]="user.Password" /><br/>
+            <input type="button"  value="SignIn" class="btn btn-success" (click)="auth()">
+            <input type="button"  value="Cancel" class="btn btn-warning" (click)="clear()">
+            
+    </div>
+   
+    
+   
+</body>
+</html>

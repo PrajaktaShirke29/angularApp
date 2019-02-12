@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container" [hidden]="!isSaved">
+        <form name="formProduct" [formGroup]="fromProduct" (submit)="save()">
+         <div class="form-group">
+             <label for="ProductId">Product Id</label>
+             <input type="text" name="ProductId" class="form-control" 
+              formControlName="ProductId" id="pid">
+         </div>
+         <div class="form-group">
+                <label for="ProductName">Product Name</label>
+                <input type="text" name="ProductName" class="form-control" 
+                 formControlName="ProductName" id="pname">
+        </div>
+        <div class="form-group">
+                <label for="CategoryName">Category Name</label>
+                <select class="form-control" name="CategoryName" 
+                 formControlName="CategoryName">
+                    <option *ngFor="let c of categories" value="{{c}}">{{ c }}</option>
+                </select>
+         </div>
+         <div class="form-group">
+                    <label for="Price">Product Price</label>
+                    <input type="text" name="Price" class="form-control" id="pprice"
+                      formControlName="Price">
+        </div>
+        <div class="form-group">
+            <input type="button" value="new" class="btn btn-default"
+            (click)="clear()">
+        
+                <input type="submit" value="save" class="btn btn-success"
+               >
+            </div>
+        </form>
+        </div>
+        <div class="container" [hidden]="isSaved" >
+            <table class="table table-bordered tableHeaders">
+                <thead>
+                    <tr>
+                        <!-- <td>Select</td> -->
+                        <td *ngFor="let c of tableHeaders">{{c}}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let p of products" (click)="getselectedrow(p)">
+                         <!-- <td><input type="checkbox" name="" id="checkbox " /></td>    -->
+                        <td *ngFor="let c of tableHeaders">                            
+                                {{ p[c] }} </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="4">
+                            <input type="button" value="Load Form" (click)="loadForm()" class="btn btn-warning">
+                        </td>
+                    </tr>
+                    
+                </tfoot>
+            </table>
+
+        </div>
+        <!-- <div class="form-group" >
+                <input type="button" value="Delete" class="btn btn-success" 
+                (click)="delete()">
+        </div>
+        <div class="form-group">
+                    <input type="button" value="Update" class="btn btn-success"
+                    (click)="update()">
+         </div> -->
+        
+    
+</body>
+</html>

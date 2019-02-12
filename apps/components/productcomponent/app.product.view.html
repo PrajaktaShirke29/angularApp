@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <form name="frmProduct" [formGroup]="frmProduct" (submit)="save()">
+        <div class="container">
+            <div class="form-group">
+                    <label>Product ID</label>
+                    <input type="text"  class="form-control" id="pid" name="ProductId"
+                    class="form-control"
+                  
+        formControlName="ProductId">
+        <div
+        *ngIf="
+          frmProduct.controls.ProductId.dirty &&
+          !frmProduct.controls.ProductId.valid
+        "
+        class="alert alert-danger"
+      >
+        <p *ngIf="frmProduct.controls.ProductId.errors.required">
+          Product Id is Must
+        </p>
+        <p *ngIf="frmProduct.controls.ProductId.errors.pattern">
+          Product Id Must be numeric
+        </p>
+        <p *ngIf="frmProduct.controls.ProductId.errors.minlength">
+          Product Id Must be min 2 digits in length
+        </p>
+        <p *ngIf="frmProduct.controls.ProductId.errors.maxlength">
+          Product Id Must be max 5 digits in length
+        </p>
+      </div>
+    
+    <div class="form-group">
+      <label for="ProductName">ProductName</label>
+      <input type="text"  class="form-control" id="ProductName" name="ProductName"
+                    class="form-control"
+                   
+        formControlName="ProductName">
+        <div
+        *ngIf="
+          frmProduct.controls.ProductName.dirty &&
+          !frmProduct.controls.ProductName.valid
+        "
+        class="alert alert-danger"
+      >
+        <p *ngIf="frmProduct.controls.ProductName.errors.required">
+          Product Name is Must
+        </p>
+        <p *ngIf="frmProduct.controls.ProductName.errors.pattern">
+          Firstletter of the Product must be capital 
+        </p>
+        <p *ngIf="frmProduct.controls.ProductName.errors.minlength">
+          Product Name Must be min 3 digits in length
+        </p>
+        <p *ngIf="frmProduct.controls.ProductName.errors.maxlength">
+          Product Name Must be max 10 digits in length
+        </p>
+       
+        <p *ngIf="frmProduct.controls.ProductName.invalid">Only 2 spaces</p>
+      
+      </div>
+    </div>
+            </div>
+
+            
+            <div class="form-group">
+                    <label >Category Name</label>
+                    <select
+             class="form-control"
+        name="CategoryName"
+        formControlName="CategoryName"
+      
+      >
+                    <option *ngFor="let c of categories" value="{{ c }}">{{ c }}</option>
+      </select>
+                  
+
+                   </div>
+            
+            <div class="form-group">
+                    <label >Product price</label>
+                    <input type="text" class="form-control" name="Price" 
+                    formControlName="Price" id="Price">
+                    <div
+                        *ngIf="
+                                     frmProduct.controls.Price.dirty &&
+                                      !frmProduct.controls.Price.valid
+                        "
+                          class="alert alert-danger"
+                         >
+                      <p *ngIf="frmProduct.controls.Price.invalid">Only positive number</p>
+                      <p *ngIf="frmProduct.controls.Price.errors.required">
+                        Price is Must
+                      </p>
+                    </div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="button" value="new" class="btn btn-default" (click)="clear()"/>
+                <input type="submit" value="save" class="btn btn-success" 
+                 (click)="save()"/>
+                <div>
+
+                </div>
+            </div>   
+        
+        <div class="container">
+            <table class="table table-bordered table-striped">
+                <thead>
+                        <tr>
+                            <td>Selected</td>
+                            <td *ngFor="let p of tableHeaders">{{p}}</td>
+                        </tr>
+                </thead>
+
+                <tbody>
+                    <tr *ngFor="let p of products" (click)="getselectedrow(p)">
+                      <td *ngFor="let c of tableHeaders">{{ p[c] }}</td>
+                    </tr>
+                  </tbody>
+                
+            </table>
+        </div>
+        </div>
+    </form>
+        
+    
+</body>
+</html>

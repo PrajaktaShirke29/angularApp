@@ -1,0 +1,17 @@
+<table class="table table-striped table-bordered">
+        <thead>
+           <tr>
+               <td>Category Id</td>
+               <td>Category Name</td>
+           </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let cat of categories"
+            (click)="selectCategory(cat)">
+                <td>{{cat.categoryId}}</td>
+                <td>{{cat.categoryName}}</td>
+            </tr>
+        </tbody>
+   </table>
+    
+   <app-productInput-component [categoryName]='categotyName'></app-productInput-component>

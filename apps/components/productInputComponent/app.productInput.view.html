@@ -1,0 +1,19 @@
+<h3>Product in Category : {{categoryName}}</h3>
+<table class="table table-striped table-bordered">
+     <thead>
+        <tr>
+            <td>Product Id</td>
+            <td>Product Name</td>
+            <td>Product Price</td>
+            <td>Cateogry</td>
+        </tr>
+     </thead>
+     <tbody>
+         <tr *ngFor="let prd of filterProducts">
+             <td>{{prd.productId}}</td>
+             <td>{{prd.productName}}</td>
+             <td>{{prd.productPrice}}</td>
+             <td>{{prd.categoryName}}</td>
+         </tr>
+     </tbody>
+</table>
